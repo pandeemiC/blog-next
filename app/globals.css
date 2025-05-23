@@ -1,26 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
 @import "tailwindcss";
 
+@layer theme, base, components, utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  background-color: #d4d1ce;
+  color: #0a0705;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-text: #0a0705;
+  --color-background: #d4d1ce;
+  --color-primary: #c3723c;
+  --color-secondary: #1a1e1d;
+  --color-accent: #99460f;
+
+  --color-dark-text: #faf7f5;
+  --color-dark-background: #312e2b;
+  --color-dark-primary: #c3723c;
+  --color-dark-secondary: #e1e5e4;
+  --color-dark-accent: #f09b64;
+
+  --font-sansation: "Sansation", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .heading {
+    @apply uppercase bg-dark-background px-6 py-3 font-sansation font-bold text-primary sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .something {
+    @apply text-center text-primary;
+  }
 }
