@@ -112,16 +112,81 @@
 }
 
 @theme {
+  --color-secondary-50: #f1f3f3;
+  --color-secondary-100: #e4e7e6;
+  --color-secondary-200: #c8d0ce;
+  --color-secondary-300: #adb8b5;
+  --color-secondary-400: #92a09d;
+  --color-secondary-500: #778884;
+  --color-secondary-600: #5f6d6a;
+  --color-secondary-700: #47524f;
+  --color-secondary-800: #2f3735;
+  --color-secondary-900: #181b1a;
+  --color-secondary-950: #0c0e0d;
+
+  --color-primary-50: #f9f1eb;
+  --color-primary-100: #f3e3d8;
+  --color-primary-200: #e7c7b1;
+  --color-primary-300: #dbaa8a;
+  --color-primary-400: #cf8e63;
+  --color-primary-500: #c3723c;
+  --color-primary-600: #9c5b30;
+  --color-primary-700: #754424;
+  --color-primary-800: #4e2e18;
+  --color-primary-900: #27170c;
+  --color-primary-950: #140b06;
+
   --color-text: #0a0705;
-  --color-background: #d4d1ce;
-  --color-primary: #c3723c;
-  --color-secondary: #1a1e1d;
-  --color-accent: #99460f;
+
+  --color-background-50: #f3f2f1;
+  --color-background-100: #e7e6e4;
+  --color-background-200: #d0ccc8;
+  --color-background-300: #b8b3ad;
+  --color-background-400: #a09992;
+  --color-background-500: #888077;
+  --color-background-600: #6d665f;
+  --color-background-700: #524d47;
+  --color-background-800: #37332f;
+  --color-background-900: #1b1a18;
+  --color-background-950: #0e0d0c;
+
+  --color-accent-50: #fdf0e8;
+  --color-accent-100: #fae1d1;
+  --color-accent-200: #f6c4a2;
+  --color-accent-300: #f1a674;
+  --color-accent-400: #ed8845;
+  --color-accent-500: #e86b17;
+  --color-accent-600: #ba5512;
+  --color-accent-700: #8b400e;
+  --color-accent-800: #5d2b09;
+  --color-accent-900: #2e1505;
+  --color-accent-950: #170b02;
+
   --font-sansation: "Sansation", sans-serif;
 }
 
 @layer utilities {
   .heading {
-    @apply uppercase bg-background px-6 py-3 font-sansation font-bold text-primary sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    @apply uppercase bg-background-900 px-6 py-3 font-sansation font-black text-primary-50 sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+  }
+
+  .sub-heading {
+    @apply font-sansation font-bold text-[20px] text-secondary-800 max-w-2xl text-center break-words;
+  }
+
+  .secondary_container {
+    @apply w-full bg-background-200 min-h-[530px] flex justify-center items-center flex-col py-10 px-6;
+  }
+
+  .search-form {
+    @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+  }
+
+  .search-input {
+    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black w-full h-auto outline-none;
+  }
+
+  .search-btn {
+    @apply size-[50px] rounded-full bg-black flex justify-center items-center;
   }
 }
