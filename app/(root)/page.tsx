@@ -1,4 +1,5 @@
 import SearchForm from "@/components/SearchForm";
+import BlogCard from "@/components/BlogCard";
 
 export default async function Home({
   searchParams,
@@ -8,10 +9,11 @@ export default async function Home({
   const query = (await searchParams).query;
   const posts = [
     {
-      _createdAt: "Yesterday",
+      _createdAt: new Date(),
       views: 55,
       author: {
         _id: 1,
+        name: "pandemiC",
       },
       _id: 1,
       description: "Simple description",
@@ -39,11 +41,13 @@ export default async function Home({
         </p>
 
         <ul className="mt-7 card_grid">
-          {/* {posts?.length > 0 ? (
-            posts.map((post: BlogCardType, i: number) => <BlogCard />)
+          {posts?.length > 0 ? (
+            posts.map((post: BlogCardType, i: number) => (
+              <BlogCard key={post?._id} post={post} />
+            ))
           ) : (
             <p className="no-result">No blogs found..</p>
-          )} */}
+          )}
         </ul>
       </section>
     </>
