@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb71a5af-a873-4bfd-aad0-131181045aea" name="Changes" comment="" />
+    <list default="true" id="bb71a5af-a873-4bfd-aad0-131181045aea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/(root)/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fonts/Sansation-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/blog-next-logo.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +28,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2xVbrdoPi07jaBI4UkpUD0uaxXI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,7 +52,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/eren/Desktop/newWorkRepo/NEXTPROJECTS/blog-next/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -71,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748026388550</updated>
       <workItem from="1748026390052" duration="389000" />
+      <workItem from="1748104971752" duration="6000" />
     </task>
     <servers />
   </component>
