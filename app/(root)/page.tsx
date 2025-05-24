@@ -1,6 +1,12 @@
 import SearchForm from "@/app/components/SearchForm";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ query?: string }>;
+}) {
+  const query = (await searchParams).query;
+
   return (
     <>
       <section className="secondary_container">
@@ -9,7 +15,7 @@ export default function Home() {
           Your Voice, Your Blog, Live on the Feed
         </p>
 
-        <SearchForm />
+        <SearchForm query={query} />
       </section>
     </>
   );
