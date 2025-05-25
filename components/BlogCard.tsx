@@ -4,12 +4,15 @@ import { formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import { Author, Blog } from "@/sanity/types";
+
+export type BlogTypeCard = Omit<Blog, "author"> & { author?: Author };
 
 const BlogCard = ({ post }: { post: BlogTypeCard }) => {
   const {
     _createdAt,
     views,
-    author: { _id: authorId, name },
+    author,
     title,
     category,
     _id,
@@ -28,14 +31,16 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
       </div>
       <div className="flex justify-between items-center mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
-            <p className="text-[16px] font-medium line-clamp-1">{name}</p>
+          <Link href={`/user/${author?._id}`}>
+            <p className="text-[16px] font-medium line-clamp-1">
+              {author?.name}
+            </p>
           </Link>
           <Link href={`/blog/${_id}`}>
             <h3 className="text-[26px] font-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
-        <Link href={`/user/${authorId}}`}>
+        <Link href={`/user/${author?._id}}`}>
           <Image
             width={48}
             height={48}
@@ -53,7 +58,7 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
       </Link>
 
       <div className="flex justify-between items-center gap-3 mt-5">
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-[16px] font-medium">{category}</p>
         </Link>
 

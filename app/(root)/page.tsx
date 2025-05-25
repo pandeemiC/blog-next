@@ -1,5 +1,5 @@
 import SearchForm from "@/components/SearchForm";
-import BlogCard from "@/components/BlogCard";
+import BlogCard, { BlogTypeCard } from "@/components/BlogCard";
 import { client } from "@/sanity/lib/client";
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
 
@@ -30,7 +30,7 @@ export default async function Home({
 
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
-            posts.map((post: BlogCardType, i: number) => (
+            posts.map((post: BlogTypeCard, i: number) => (
               <BlogCard key={post?._id} post={post} />
             ))
           ) : (
