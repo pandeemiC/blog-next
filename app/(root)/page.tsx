@@ -1,5 +1,7 @@
 import SearchForm from "@/components/SearchForm";
 import BlogCard from "@/components/BlogCard";
+import { client } from "@/sanity/lib/client";
+import { BLOGS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home({
   searchParams,
@@ -7,22 +9,8 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: {
-        _id: 1,
-        name: "pandemiC",
-      },
-      _id: 1,
-      description: "Simple description",
-      image:
-        "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      category: "Gaming",
-      title: "Pro Gaming",
-    },
-  ];
+
+  const posts = await client.fetch(BLOGS_QUERY);
 
   return (
     <>
