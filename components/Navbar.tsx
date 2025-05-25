@@ -12,8 +12,9 @@ const Navbar = async () => {
           <img
             src="/blog-next-logo.png"
             alt="BlogLogo"
-            width={110}
+            width={60}
             height={30}
+            className="m-3 transition-transform duration-300 hover:scale-110"
           />
         </Link>
 
