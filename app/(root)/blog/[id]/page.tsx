@@ -21,7 +21,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
 
-      <section className="section_container">
+      <section className="section_container font-sansation">
         <img
           src={post.image}
           alt="Post Image"
@@ -46,9 +46,24 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                 </p>
               </div>
             </Link>
-          </div>
 
-          <p></p>
+            <p className="category-tag shadow-2xl">{post.category}</p>
+          </div>
+          <svg
+            className="w-[40vw] h-3"
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="0"
+              y1="5"
+              x2="100"
+              y2="5"
+              className="stroke-current text-secondary-800"
+              strokeWidth="1"
+            />
+          </svg>
         </div>
       </section>
     </>

@@ -171,7 +171,7 @@
   }
 
   .sub-heading {
-    @apply font-sansation font-bold text-[20px] text-secondary-800 max-w-2xl text-center break-words;
+    @apply font-sansation uppercase font-medium text-[20px] text-secondary-800 max-w-2xl text-center break-words;
   }
 
   .secondary_container {
@@ -230,6 +230,10 @@
     @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
 
+  .category-tag {
+    @apply font-medium font-sansation text-[16px] bg-background-800 text-white shadow-xl/30 px-4 py-2 rounded-full;
+  }
+
   .tag {
     @apply bg-background-300 px-6 py-3 font-sansation font-bold rounded-sm uppercase relative shadow-xl;
   }
@@ -237,8 +241,8 @@
   .tag::before {
     content: "";
     position: absolute;
-    top: 0.5rem; /* Adjust as needed */
-    left: 0.5rem; /* Adjust as needed */
+    top: 0.5rem;
+    left: 0.5rem;
     border-top: 10px solid black;
     border-right: 10px solid transparent;
   }
@@ -246,8 +250,8 @@
   .tag::after {
     content: "";
     position: absolute;
-    bottom: 0.5rem; /* Adjust as needed */
-    right: 0.5rem; /* Adjust as needed */
+    bottom: 0.5rem;
+    right: 0.5rem;
     border-bottom: 10px solid black;
     border-left: 10px solid transparent;
   }
