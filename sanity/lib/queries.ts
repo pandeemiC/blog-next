@@ -1,7 +1,14 @@
 import { defineQuery } from "next-sanity";
 
-export const BLOGS_QUERY =
-  defineQuery(`*[_type == 'blog' && defined(slug.current)] | order(_createdAt desc) {
+export const BLOGS_QUERY = defineQuery(
+  `*[_type == 'blog' && defined(slug.current) && (
+      !defined($search) ||
+      lower(title) match lower($search) + "*" || 
+      lower(title) match "*" + lower($search) + "*" || 
+      lower(category) match "*" + lower($search) + "*" ||
+      lower(author->name) match "*" + lower($search) + "*" ||
+      lower(description) match "*" + lower($search) + "*" 
+    )] | order(_createdAt desc) {
     _id,
     title,
     slug,
@@ -13,4 +20,5 @@ export const BLOGS_QUERY =
     description,
     category,
     image
-  }`);
+  }`
+);
