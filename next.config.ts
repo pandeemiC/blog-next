@@ -18,10 +18,12 @@ const nextConfig: NextConfig = {
   },
 
   devIndicators: {
-    appIsrStatus: true,
-    buildActivity: true,
-    buildActivityPosition: "bottom-right",
+    position: "bottom-right",
   },
+
+  // devServer: {
+  //   allowedDevOrigins: ["http://192.168.1.21:3000"],
+  // },
 };
 
 export default nextConfig;

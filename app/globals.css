@@ -229,4 +229,26 @@
   .blog-card-skeleton {
     @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
+
+  .tag {
+    @apply bg-background-300 px-6 py-3 font-sansation font-bold rounded-sm uppercase relative shadow-xl;
+  }
+
+  .tag::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem; /* Adjust as needed */
+    left: 0.5rem; /* Adjust as needed */
+    border-top: 10px solid black;
+    border-right: 10px solid transparent;
+  }
+
+  .tag::after {
+    content: "";
+    position: absolute;
+    bottom: 0.5rem; /* Adjust as needed */
+    right: 0.5rem; /* Adjust as needed */
+    border-bottom: 10px solid black;
+    border-left: 10px solid transparent;
+  }
 }

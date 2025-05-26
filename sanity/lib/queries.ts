@@ -30,7 +30,7 @@ export const BLOGS_BY_ID_QUERY = defineQuery(
     slug,
     _createdAt,
     author -> {
-      _id, name, image, bio
+      _id, name, image, bio, username
     },
     views,
     description,
