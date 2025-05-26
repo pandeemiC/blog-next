@@ -44,7 +44,7 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
           <Image
             width={48}
             height={48}
-            src="https://placehold.co/48x48"
+            src={author?.image}
             className="rounded-full"
             alt="placeholder"
           />

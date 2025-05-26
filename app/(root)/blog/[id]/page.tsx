@@ -14,6 +14,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const md = markdownit();
   const parsedContent = md.render(post?.article || "");
+  console.log(JSON.stringify(parsedContent));
 
   if (!post) return notFound();
 
@@ -32,11 +33,11 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           className="rounded-xl w-full h-auto"
         />
 
-        <div className="space-y-5 mt-10 max-w-6xl mx-auto">
+        <div className="space-y-5 mt-10 max-w-10xl mx-auto">
           <div className="flex justify-between items-center gap-5">
             <Link
               href={`/user/${post.author?._id}`}
-              className="flex gap-2 items-center mb-3"
+              className="flex gap-5 items-center mb-3"
             >
               <Avatar>
                 <AvatarImage alt={post.author.name} src={post.author.image} />
@@ -69,7 +70,14 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
           </svg>
         </div>
-        <p>{parsedContent}</p>
+        {parsedContent ? (
+          <article
+            className="prose max-w-5xl font-sansation break-all mt-5"
+            dangerouslySetInnerHTML={{ __html: parsedContent }}
+          />
+        ) : (
+          <p className="no-result">No details provided..</p>
+        )}
       </section>
     </>
   );
