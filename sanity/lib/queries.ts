@@ -22,3 +22,20 @@ export const BLOGS_QUERY = defineQuery(
     image
   }`
 );
+
+export const BLOGS_BY_ID_QUERY = defineQuery(
+  `*[_type == 'blog' && _id == $id][0] {
+    _id,
+    title,
+    slug,
+    _createdAt,
+    author -> {
+      _id, name, image, bio
+    },
+    views,
+    description,
+    category,
+    image,
+    article
+  }`
+);
