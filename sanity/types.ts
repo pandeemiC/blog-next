@@ -143,7 +143,7 @@ export type Blog = {
   description?: string;
   category?: string;
   image?: string;
-  pitch?: string;
+  article?: string;
 };
 
 export type Slug = {

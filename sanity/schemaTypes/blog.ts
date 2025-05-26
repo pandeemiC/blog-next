@@ -42,7 +42,7 @@ export const blog = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "pitch",
+      name: "article",
       type: "markdown",
     }),
   ],

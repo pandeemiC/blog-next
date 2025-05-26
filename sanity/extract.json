@@ -770,7 +770,7 @@
         },
         "optional": true
       },
-      "pitch": {
+      "article": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
