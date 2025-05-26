@@ -4,12 +4,16 @@ import { BLOGS_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import markdownit from "markdown-it";
 
 export const experimental_ppr = true;
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
   const post = await client.fetch(BLOGS_BY_ID_QUERY, { id });
+
+  const md = markdownit();
+  const parsedContent = md.render(post?.article || "");
 
   if (!post) return notFound();
 
@@ -65,6 +69,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
           </svg>
         </div>
+        <p>{parsedContent}</p>
       </section>
     </>
   );
