@@ -9,15 +9,21 @@ const View = async ({ id }: { id: string }) => {
     .fetch(BLOG_VIEWS_QUERY, { id });
 
   return (
-    <div className="view-container">
-      <div className="absolute -top-2 -right-2">
-        <Ping />
-      </div>
+    <>
+      {totalViews ? (
+        <div className="view-container">
+          <div className="absolute -top-2 -right-2">
+            <Ping />
+          </div>
 
-      <p className="view-text">
-        <span className="font-black">Views: {totalViews}</span>
-      </p>
-    </div>
+          <p className="view-text">
+            <span className="font-black">Views: {totalViews}</span>
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 
