@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
   },
 
   devIndicators: {
-    position: "bottom-right",
+    position: "bottom-left",
   },
 
   // devServer: {
