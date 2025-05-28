@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
+import { Toaster } from "sonner";
 
 const sansation = localFont({
   src: [
@@ -51,7 +52,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sansation.variable} antialiased`}>{children}</body>
+      <body className={`${sansation.variable} antialiased`}>
+        {children}
+        <Toaster position="top-center" />
+      </body>
     </html>
   );
 }

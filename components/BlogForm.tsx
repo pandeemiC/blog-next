@@ -7,10 +7,15 @@ import MDEditor from "@uiw/react-md-editor";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
+import { z } from "zod";
+import { toast } from "sonner";
+import { useRouter } from "next/router";
 
 const BlogForm = () => {
   const [error, setError] = useState<Record<string, string>>({});
   const [article, setArticle] = useState("**Hello");
+
+  // const router = useRouter();
 
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
@@ -24,11 +29,34 @@ const BlogForm = () => {
       await formSchema.parseAsync(formValues);
       console.log(formValues);
 
-      // const result = await createEntry(prevState, formData, entry)
-      // console.log(result)
+      // // const result = await createEntry(prevState, formData, entry)
+      // // console.log(result)
+      // if (result.status === "SUCCESS") {
+      //   toast.success("Blog has been created!");
+      //   router.push(`/blog/${result.id}`);
+      // }
+      // return result;
     } catch (error) {
-      throw new Error("");
-    } finally {
+      if (error instanceof z.ZodError) {
+        const fieldErrors = error.flatten().fieldErrors;
+        setError(fieldErrors as unknown as Record<string, string>);
+
+        toast.error("Error", {
+          description: "Please check your inputs and try again",
+        });
+
+        return { ...prevState, error: "Validation failed:", status: "ERROR" };
+      }
+
+      toast.error("Error", {
+        description: "Unexpected error has occurred.",
+      });
+
+      return {
+        ...prevState,
+        error: "Unexpected error has occurred.",
+        status: "ERROR",
+      };
     }
   };
   const [state, formAction, isPending] = useActionState(handleFormSubmit, {
@@ -37,7 +65,7 @@ const BlogForm = () => {
   });
 
   return (
-    <form action={() => {}} className="blog-form">
+    <form action={formAction} className="blog-form">
       <div>
         <label htmlFor="title" className="blog-form-label">
           Title
