@@ -2,6 +2,8 @@ import SearchForm from "@/components/SearchForm";
 import BlogCard, { BlogTypeCard } from "@/components/BlogCard";
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
+import { Session, JWT } from "next-auth";
 
 export default async function Home({
   searchParams,
@@ -10,6 +12,11 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
   const params = { search: query || null };
+
+  const session = await auth();
+
+  console.log(session?.id);
+
   const { data: posts } = await sanityFetch({ query: BLOGS_QUERY, params });
 
   return (
