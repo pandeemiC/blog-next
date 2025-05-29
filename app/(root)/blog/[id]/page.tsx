@@ -10,14 +10,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 
 export const experimental_ppr = true;
+const md = markdownit();
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
   const post = await client.fetch(BLOGS_BY_ID_QUERY, { id });
 
-  const md = markdownit();
+  console.log("Fetched Sanity Post Object:", JSON.stringify(post, null, 2));
+
   const parsedContent = md.render(post?.article || "");
-  console.log(JSON.stringify(parsedContent));
+  console.log("Markdown Content:", post?.article);
 
   if (!post) return notFound();
 

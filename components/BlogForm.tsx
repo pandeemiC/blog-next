@@ -9,13 +9,14 @@ import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { createEntry } from "@/lib/actions";
 
 const BlogForm = () => {
   const [error, setError] = useState<Record<string, string>>({});
   const [article, setArticle] = useState("**Hello");
 
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
@@ -27,15 +28,14 @@ const BlogForm = () => {
         article,
       };
       await formSchema.parseAsync(formValues);
-      console.log(formValues);
 
-      // // const result = await createEntry(prevState, formData, entry)
-      // // console.log(result)
-      // if (result.status === "SUCCESS") {
-      //   toast.success("Blog has been created!");
-      //   router.push(`/blog/${result.id}`);
-      // }
-      // return result;
+      const result = await createEntry(prevState, formData, article);
+
+      if (result.status === "SUCCESS") {
+        toast.success("Blog has been created!");
+        router.push(`/blog/${result._id}`);
+      }
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
