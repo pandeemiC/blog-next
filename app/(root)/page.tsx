@@ -21,7 +21,7 @@ export default async function Home({
 
   return (
     <>
-      <section className="pattern secondary_container">
+      <section className="pattern secondary_container mask-alpha mask-b-from-white mask-b-from-80% mask-b-to-transparent">
         <h1 className="heading shadow-xl">Express & Share</h1>
         <p className="sub-heading bg-background-100 p-2 rounded-md shadow-md !max-w-3xl">
           Your Voice, Your Blog, Live on the Feed
