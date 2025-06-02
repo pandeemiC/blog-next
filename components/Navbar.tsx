@@ -1,9 +1,24 @@
 import React from "react";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth, signOut, signIn } from "@/auth";
+import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
+import { Author } from "@/sanity/types";
 
 const Navbar = async () => {
   const session = await auth();
+  let authorData: Author | null = null;
+
+  if (session && (session as any).id) {
+    try {
+      authorData = await client.fetch<Author>(AUTHOR_BY_ID_QUERY, {
+        id: (session as any).id,
+      });
+    } catch (error) {
+      console.error("Failed to fetch author data in Navbar:", error);
+    }
+  }
 
   return (
     <header className="px-5 py-1 bg-background-200 border-b shadow-sm font-sansation">
@@ -19,7 +34,7 @@ const Navbar = async () => {
         </Link>
 
         <div className="flex items-center gap-5 text-secondary text-xl">
-          {session && session?.user ? (
+          {session && session.user && authorData ? (
             <>
               <Link href="/blog/create">
                 <span>Create</span>
@@ -32,8 +47,18 @@ const Navbar = async () => {
               >
                 <button type="submit">Logout</button>
               </form>
-              <Link href={`/user/${session?.id}`}>
-                <span>{session?.user?.name}</span>
+              <Link href={`/user/${(session as any).id}`}>
+                <Avatar>
+                  <AvatarImage
+                    alt={authorData.name || session.user.name || "User"}
+                    src={authorData.image || session.user.image || undefined}
+                  />
+                  <AvatarFallback>
+                    {(authorData.name || session.user.name || "AV")
+                      .substring(0, 2)
+                      .toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
               </Link>
             </>
           ) : (

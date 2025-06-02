@@ -270,6 +270,26 @@
     font-size: 25px;
   }
 
+  .nextjs-bg {
+    --dot-bg: #d2cfcf;
+    --dot-color: #131313;
+    --dot-size: 3px;
+    --dot-space: 50px;
+    background:
+      linear-gradient(
+          90deg,
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      linear-gradient(
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
+
   .view_skeleton {
     @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
   }
@@ -308,5 +328,21 @@
 
   .blog-form-btn {
     @apply bg-background-900 shadow-2xl hover:bg-background-800 cursor-pointer border-1 font-sansation border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[24px];
+  }
+
+  .profile-container {
+    @apply w-full pb-10 pt-20 px-6 max-w-7xl mx-auto lg:flex-row flex-col flex gap-10;
+  }
+
+  .profile-card {
+    @apply w-80 px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-background-300 border-2 border-black shadow-2xl rounded-xl relative z-0 h-fit max-lg:w-full;
+  }
+
+  .profile-title {
+    @apply w-11/12 bg-white border-5 border-black rounded-lg px-5 py-3 absolute -top-2 after:absolute after:content-[''] after:-top-1 after:right-0 after:-skew-y-6 after:bg-black after:-z-[1] after:rounded-full after:w-full after:h-[55px] before:absolute before:content-[''] before:-bottom-1 before:left-0 before:skew-y-6 before:w-full before:h-[60px] before:bg-black/80 before:-z-[1] before:rounded-full shadow-xl;
+  }
+
+  .profile-image {
+    @apply rounded-full object-cover border-[5px] border-black;
   }
 }
