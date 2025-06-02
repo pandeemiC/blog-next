@@ -28,7 +28,7 @@ export default function LogOutModal() {
       <AlertDialogTrigger asChild>
         <div>
           {" "}
-          <span className="login">Logout</span>
+          <span className="login max-sm:hidden">Logout</span>
           <Button
             variant="ghost"
             className="sm:hidden p-0 hover:bg-transparent"
