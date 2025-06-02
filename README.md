@@ -59,7 +59,7 @@ The project leverages the following technologies:
 
 ## Live Application
 
-- **Deployed Version:** []
+- **Deployed Version:** [https://blog-next-mauve-sigma.vercel.app/]
 
 ---
 
