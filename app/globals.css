@@ -204,7 +204,7 @@
   }
 
   .card_grid-sm {
-    @apply grid sm:grid-cols-2 gap-2;
+    @apply grid sm:grid-cols-2 gap-3;
   }
 
   .no-result {
@@ -351,6 +351,10 @@
   }
 
   .login {
-    @apply border-1 px-5 py-3 cursor-pointer rounded-xl border-black bg-transparent hover:bg-background-300 text-black shadow-xl font-sansation font-medium transition-all duration-300;
+    @apply border-1 border-b-4 px-5 py-3 cursor-pointer rounded-xl border-black bg-transparent hover:bg-background-300 text-black shadow-xl font-sansation font-medium transition-all duration-300;
+  }
+
+  .divider {
+    @apply border-dotted bg-zinc-400 max-w-4xl my-10 mx-auto;
   }
 }

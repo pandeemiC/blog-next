@@ -5,7 +5,7 @@ import { auth, signOut, signIn } from "@/auth";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { Author } from "@/sanity/types";
-import { LogOut, NotebookPen } from "lucide-react";
+import { Github, NotebookPen } from "lucide-react";
 import LogOutModal from "./LogOutModal";
 
 const Navbar = async () => {
@@ -21,8 +21,6 @@ const Navbar = async () => {
       console.error("Failed to fetch author data in Navbar:", error);
     }
   }
-
-  const handleLogOut = () => {};
 
   return (
     <header className="px-5 py-1 bg-background-200 border-b shadow-sm font-sansation">
@@ -68,7 +66,11 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <button type="submit" className="login">
+              <button
+                type="submit"
+                className="login flex justify-center items-center gap-2"
+              >
+                <Github className="size-6" />
                 Login
               </button>
             </form>

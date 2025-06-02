@@ -1,6 +1,9 @@
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
-import { BLOGS_BY_ID_QUERY } from "@/sanity/lib/queries";
+import {
+  BLOGS_BY_ID_QUERY,
+  PLAYLIST_BY_SLUG_QUERY,
+} from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
@@ -8,6 +11,7 @@ import markdownit from "markdown-it";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
+import BlogCard, { BlogTypeCard } from "@/components/BlogCard";
 
 export const experimental_ppr = true;
 const md = markdownit();
@@ -16,7 +20,9 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
   const post = await client.fetch(BLOGS_BY_ID_QUERY, { id });
 
-  console.log("Fetched Sanity Post Object:", JSON.stringify(post, null, 2));
+  const { select: editorPosts } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+    slug: "editor-picks",
+  });
 
   const parsedContent = md.render(post?.article || "");
   console.log("Markdown Content:", post?.article);
@@ -82,6 +88,19 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           />
         ) : (
           <p className="no-result">No details provided..</p>
+        )}
+
+        <hr className="divider" />
+
+        {editorPosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-[30px] font-bold">Editor Picks</p>
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: BlogTypeCard, index: number) => (
+                <BlogCard key={index} post={post} />
+              ))}
+            </ul>
+          </div>
         )}
 
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
