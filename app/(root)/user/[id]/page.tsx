@@ -6,7 +6,6 @@ import Image from "next/image";
 import React, { Suspense } from "react";
 import UserBlogs from "@/components/UserBlogs";
 import BlogCardSkeleton from "@/components/BlogCardSkeleton";
-import BlogCard from "@/components/BlogCard";
 
 export const experimental_ppr = true;
 
