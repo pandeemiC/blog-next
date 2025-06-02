@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
@@ -19,6 +19,8 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
     image,
     description,
   } = post;
+
+  const DEFAULT_AVATAR_URL = "https://placehold.co/48x48";
 
   return (
     <li className="blog-card group font-sansation">
@@ -44,7 +46,7 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
           <Image
             width={48}
             height={48}
-            src="https://placehold.co/48x48"
+            src={author?.image || DEFAULT_AVATAR_URL}
             className="rounded-full"
             alt="placeholder"
           />

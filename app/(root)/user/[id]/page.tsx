@@ -3,7 +3,12 @@ import { client } from "@/sanity/lib/client";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
+import UserBlogs from "@/components/UserBlogs";
+import BlogCardSkeleton from "@/components/BlogCardSkeleton";
+import BlogCard from "@/components/BlogCard";
+
+export const experimental_ppr = true;
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
@@ -37,6 +42,17 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           <p className="mt-1 font-sansation italic text-center bg-white p-3 border-black border-2 rounded-lg text-[14px] font-regular">
             {user?.bio}
           </p>
+        </div>
+
+        <div className="flex-1 flex flex-col gap-5 lg:-mt-5">
+          <p className="text-[30px] font-sansation font-bold uppercase">
+            {session?.id === id ? "Your" : "All"} Blogs
+          </p>
+          <ul className="card_grid-sm">
+            <Suspense fallback={<BlogCardSkeleton />}>
+              <UserBlogs id={id} />
+            </Suspense>
+          </ul>
         </div>
       </section>
     </>

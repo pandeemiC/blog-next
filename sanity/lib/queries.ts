@@ -56,3 +56,19 @@ export const AUTHOR_BY_ID_QUERY = defineQuery(
       _id, id, name, username, email, image, bio
     }`
 );
+
+export const BLOGS_BY_AUTHOR_QUERY = defineQuery(
+  `*[_type == 'blog' && author._ref == $id] | order(_createdAt desc) {
+    _id,
+    title,
+    slug,
+    _createdAt,
+    author -> {
+      _id, name, image, bio
+    },
+    views,
+    description,
+    category,
+    image
+  }`
+);
