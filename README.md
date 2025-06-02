@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BlogNext - A Blogging Platform Project
 
-## Getting Started
+BlogNext, a project that's a full-stack blogging application built to explore modern web development practices with Next.js and Sanity.io.
 
-First, run the development server:
+## Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+BlogNext is designed as a platform for users to read, search, and (for authenticated users) eventually create blog content. The primary goal for the project is to get a hands on learning experience with common Next.js, CMS anderror monitoring practices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Core Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Blog Post Display:** Renders blog posts fetched from a headless CMS.
+- **Content Search:** Users can search for blog posts by title, category, author, and content description, which the search functionality is case-insensitive.
+- **User Authentication:** Implements GitHub OAuth for user login via NextAuth.js.
+- **Author Integration:** Associates blog posts with authors, displaying author information,avatars and their descriptions.
+- **Markdown Support:** Blog content is intended to be written in Markdown and is styled using Tailwind CSS Typography for a clean reading experience.
+- **Responsive Design:** Styled with Tailwind CSS for adaptability across different screen sizes.
+- **Experimental Next.js Features:** The project is configured to use Next.js 15 (Canary) with Turbopack and has support for experimental Partial Prerendering (PPR).
+- **Error Tracking:** Utilizes Sentry.io for real-time error reporting and performance monitoring.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Screenshots 📷
 
-To learn more about Next.js, take a look at the following resources:
+<details>
+<summary>Click here to view screenshots</summary>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Screenshot](./public/homepage.png)
+![Screenshot](./public/createpage.png)
+![Screenshot](./public/blogarticle.png)
+![Screenshot](./public/userpage.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Fully Responsive
 
-## Deploy on Vercel
+![Screenshot](./public/responsive1.png)
+![Screenshot](./public/responsive2.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+</details>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technology Stack
+
+The project leverages the following technologies:
+
+- **Framework:** Next.js (v15 Canary with Turbopack and PPR enabled)
+- **Language:** TypeScript
+- **Styling:**
+  - Tailwind CSS (v4)
+  - Shadcn UI (for core UI components like Avatar, AlertDialog)
+  - Lucide React (for SVG icons)
+- **Headless CMS:** Sanity.io (v3)
+  - GROQ for data querying
+  - `sanity-plugin-markdown` for Markdown rich text editing in the Studio
+- **Authentication:** NextAuth.js with GitHub Provider
+- **Markdown Processing:**
+  - `markdown-it` for converting Markdown to HTML
+  - `@tailwindcss/typography` for styling rendered Markdown content
+- **Error Tracking & Performance Monitoring:** Sentry.io
+
+---
+
+## Live Application
+
+- **Deployed Version:** []
+
+---
+
+## Future Enhancements
+
+- Implementation of Dark Mode and toggles.
+- Editing for authorized users.
+- Set of settings for the user profiles. (Themes?)
+- A commenting system on published blogs by authorized users.
+
+---
+
+This project was entirely for learning purposes, if you have any feedback feel free to reach me.

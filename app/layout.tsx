@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
 import { Toaster } from "sonner";
+import Footer from "@/components/Footer";
 
 const sansation = localFont({
   src: [
@@ -52,9 +53,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sansation.variable} antialiased`}>
-        {children}
+      <body
+        className={`${sansation.variable}  antialiased flex flex-col min-h-screen`}
+      >
+        <main className="flex-1">{children}</main>
         <Toaster position="top-center" />
+        <Footer />
       </body>
     </html>
   );

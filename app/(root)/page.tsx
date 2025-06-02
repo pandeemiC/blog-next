@@ -3,6 +3,7 @@ import BlogCard, { BlogTypeCard } from "@/components/BlogCard";
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
+import Footer from "@/components/Footer";
 
 export default async function Home({
   searchParams,

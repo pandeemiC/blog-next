@@ -9,6 +9,16 @@
 
 @layer theme, base, components, utilities;
 
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+  #__next {
+    @apply flex flex-col min-h-screen;
+  }
+}
+
 :root {
   color: #0a0705;
   --radius: 0.625rem;
