@@ -5,6 +5,8 @@ import { auth, signOut, signIn } from "@/auth";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { Author } from "@/sanity/types";
+import { LogOut, NotebookPen } from "lucide-react";
+import LogOutModal from "./LogOutModal";
 
 const Navbar = async () => {
   const session = await auth();
@@ -19,6 +21,8 @@ const Navbar = async () => {
       console.error("Failed to fetch author data in Navbar:", error);
     }
   }
+
+  const handleLogOut = () => {};
 
   return (
     <header className="px-5 py-1 bg-background-200 border-b shadow-sm font-sansation">
@@ -36,17 +40,13 @@ const Navbar = async () => {
         <div className="flex items-center gap-5 text-secondary text-xl">
           {session && session.user && authorData ? (
             <>
+              <LogOutModal />
+
               <Link href="/blog/create">
-                <span>Create</span>
+                <span className="max-sm:hidden login">Create</span>
+                <NotebookPen className="size-10 sm:hidden" />
               </Link>
-              <form
-                action={async () => {
-                  "use server";
-                  await signOut({ redirectTo: "/" });
-                }}
-              >
-                <button type="submit">Logout</button>
-              </form>
+
               <Link href={`/user/${(session as any).id}`}>
                 <Avatar>
                   <AvatarImage
@@ -68,7 +68,9 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <button type="submit">Login</button>
+              <button type="submit" className="login">
+                Login
+              </button>
             </form>
           )}
         </div>

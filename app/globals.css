@@ -349,4 +349,8 @@
   .profile-image {
     @apply rounded-full object-cover border-[5px] border-black;
   }
+
+  .login {
+    @apply border-1 px-5 py-3 cursor-pointer rounded-xl border-black bg-transparent hover:bg-background-300 text-black shadow-xl font-sansation font-medium transition-all duration-300;
+  }
 }

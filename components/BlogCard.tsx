@@ -42,7 +42,7 @@ const BlogCard = ({ post }: { post: BlogTypeCard }) => {
             <h3 className="text-[26px] font-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
-        <Link href={`/user/${author?._id}}`}>
+        <Link href={`/user/${author?._id}`}>
           <Image
             width={48}
             height={48}
