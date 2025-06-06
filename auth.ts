@@ -15,7 +15,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return false;
       }
 
-      const { name, email, image } = user || {};
+      const { name, email, image } = user;
 
       const githubId: number = Number(profile.id);
       if (isNaN(githubId)) {
